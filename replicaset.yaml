@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: pruthvi
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: pruthvi
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 2
+  replicas: 5
+  selector:
+    matchLabels:
+      app: pruthvi
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: pruthvi
+    spec:
+      containers:
+      - name: nginx
+        image: redis
