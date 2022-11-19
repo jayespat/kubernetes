@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis
+  name: db
 spec:
   strategy:
     type: RollingUpdate
@@ -11,14 +11,13 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: redis
+      app: db
   template:
     metadata:
-      name: redis
+      name: db
       labels:
-        app: redis
+        app: db
     spec:
       containers:
-      - name: redis
-        image: redis:5.0-alpine3.10
-
+      - name: db
+        image: postgres:10.1
